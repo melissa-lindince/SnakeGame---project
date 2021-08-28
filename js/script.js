@@ -10,6 +10,10 @@ window.addEventListener('keydown', event => {
 
 setInterval(game, 100)
 
+//Sound
+const foodSound = new Audio('sound/foodSound.mp3')
+
+
 let snake = []
 let positionX = 0
 let positionY = 0
@@ -23,7 +27,6 @@ function game() {
     contextBackground()
     updateFoodPosition()
     updateTail()
-   
 }
 
 function contextBackground() {
@@ -40,6 +43,7 @@ function updateFoodPosition() {
     drawFood()
     if(positionX == foodX && positionY == foodY) {
         tailLength++
+        foodSound.play()
         foodX = Math.floor(Math.random()*16)
         foodY =  Math.floor(Math.random()*16)
     }
