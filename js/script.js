@@ -13,7 +13,7 @@ setInterval(game, 100)
 
 //Sound
 const foodSound = new Audio('sound/foodSound.mp3')
-const moveSound = new Audio('sound/moveSound.mp3')
+const moveSound = new Audio('sound/move.mp3')
 const music = new Audio('sound/startMusic.mp3')
 
 
@@ -54,10 +54,13 @@ function updateFoodPosition() {
 }
 
 function drawSnake() {
+    
     snake.push({x:positionX, y:positionY})
     context.fillStyle = "blue"
+    
     for(let i = 0; i < snake.length; i++) {
         context.fillRect(snake[i].x *grid, snake[i].y * grid, grid-1, grid-1)
+        
     }
 }
 
@@ -65,16 +68,18 @@ function updateSnakePosition() {
     drawSnake()
     positionX += direction.x
     positionY += direction.y
-
-    console.log(positionX)
+    
     if(positionX < 0 || positionX > 15) positionX = 0
     if(positionY < 0 || positionY > 15 ) positionY = 0
+    
 }
 
 function updateTail() {
     updateSnakePosition()
     while(snake.length > tailLength) {
         snake.shift()
+        
+        
     }
 }
 
