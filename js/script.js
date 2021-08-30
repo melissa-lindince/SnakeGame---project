@@ -2,6 +2,7 @@ let canvas = document.getElementById('snake')
 let context = canvas.getContext('2d')
 
 window.addEventListener('keydown', event => {
+    moveSound.play()
     if(event.keyCode == 38 || event.keyCode == 87) direction.x = 0, direction.y = -1
     if(event.keyCode == 40 || event.keyCode == 83) direction.x = 0, direction.y = 1
     if(event.keyCode == 37 || event.keyCode == 65) direction.x = -1, direction.y = 0
@@ -12,6 +13,8 @@ setInterval(game, 100)
 
 //Sound
 const foodSound = new Audio('sound/foodSound.mp3')
+const moveSound = new Audio('sound/moveSound.mp3')
+const music = new Audio('sound/startMusic.mp3')
 
 
 let snake = []
@@ -27,6 +30,7 @@ function game() {
     contextBackground()
     updateFoodPosition()
     updateTail()
+    music.play()
 }
 
 function contextBackground() {
